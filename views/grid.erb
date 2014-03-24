@@ -4,6 +4,17 @@ body {
   color: #dddddd;
 }
 
+img {
+  width:19%;
+}
+
+.container {
+  width:95%;
+  max-width:1000px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
 .check
 {
   text-shadow:
@@ -19,19 +30,16 @@ body {
 }
 </style>
 
-<div style="width:95%; max-width:1000px; margin-left:auto;margin-right:auto;">
+<div class="container">
 
   <h1><%= @name %>'s grid</h1>
 
-  <p><%= @games.count %> games</p>
+  <p><%= @games.count %> games, <%= @games.map {|g| g["playtime_forever"] }.inject(:+) / 60 %> hours played</p>
 
   <div>
     <% @games.each do |game| %>
       <span>
-        <img onerror='this.style.display="none"' style="margin:0px 0px 0px 0px" width='19%' src='http://cdn4.steampowered.com/v/gfx/apps/<%= game["appid"] %>/header.jpg' />
-        <% if game["playtime_forever"] > 1 %>
-          <span class="check">&#x2713;</span>
-        <% end %>
+        <img onerror='this.style.display="none"' src='http://cdn4.steampowered.com/v/gfx/apps/<%= game["appid"] %>/header.jpg' />
       </span>
     <% end %>
   </div>
