@@ -1,46 +1,14 @@
-<style>
-body {
-  background-color: #262627;
-  color: #dddddd;
-}
+<h1><%= @name %>'s games</h1>
 
-img {
-  width:19%;
-}
+<p><%= @games.count %> games, <%= @games.map {|g| g["playtime_forever"] }.inject(:+) / 60 %> hours played<br>
+<%= "showing games with more than #{ params[:h] } hours of playtime" if params[:h].to_i > 0 %>
 
-.container {
-  width:95%;
-  max-width:1000px;
-  margin-left:auto;
-  margin-right:auto;
-}
+</p>
 
-.check
-{
-  text-shadow:
-  -1px -1px 0 #000,
-  1px -1px 0 #000,
-  -1px 1px 0 #000,
-  1px 1px 0 #000; 
-  position:relative;
-  margin-right: -44px;
-  left: -44px;
-  color:#33FF33;
-  font-size:48px;
-}
-</style>
-
-<div class="container">
-
-  <h1><%= @name %>'s grid</h1>
-
-  <p><%= @games.count %> games, <%= @games.map {|g| g["playtime_forever"] }.inject(:+) / 60 %> hours played</p>
-
-  <div>
-    <% @games.each do |game| %>
-      <span>
-        <img onerror='this.style.display="none"' src='http://cdn4.steampowered.com/v/gfx/apps/<%= game["appid"] %>/header.jpg' />
-      </span>
-    <% end %>
-  </div>
+<div>
+  <% @games.each do |game| %>
+    <span>
+      <img class="<%= 'done' if game['playtime_forever']/60 < params[:h].to_i %>" onerror='this.style.display="none"' src='http://cdn4.steampowered.com/v/gfx/apps/<%= game["appid"] %>/header.jpg' />
+    </span>
+  <% end %>
 </div>

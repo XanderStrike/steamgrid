@@ -21,3 +21,7 @@ get '/grid' do
 
   erb :grid
 end
+
+get '/public/:filename' do
+  send_file File.expand_path(params[:filename], settings.public_folder)
+end

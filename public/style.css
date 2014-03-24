@@ -1,0 +1,33 @@
+body {
+  background-color: #262627;
+  color: #dddddd;
+}
+
+img {
+  width:19%;
+}
+
+.container {
+  width:95%;
+  max-width:1000px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.check
+{
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000; 
+  position:relative;
+  margin-right: -44px;
+  left: -44px;
+  color:#33FF33;
+  font-size:48px;
+}
+
+.done {
+  opacity:0.1;
+}
