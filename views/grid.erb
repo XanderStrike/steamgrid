@@ -1,0 +1,10 @@
+<div style="width:95%; max-width:1000px; margin-left:auto;margin-right:auto;">
+
+  <h1><%= @name %>'s grid</h1>
+
+  <div>
+    <% @games.each do |game| %>
+      <img onerror='this.style.display="none"' style="margin:0px 0px 0px 0px" width='19%' src='http://cdn4.steampowered.com/v/gfx/apps/<%= game["appid"] %>/header.jpg' />
+    <% end %>
+  </div>
+</div>
