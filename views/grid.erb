@@ -8,7 +8,7 @@
 <div>
   <% @games.each do |game| %>
     <span>
-      <img class="<%= 'done' if game['playtime_forever']/60 < params[:h].to_i %>" onerror='this.style.display="none"' src='http://cdn4.steampowered.com/v/gfx/apps/<%= game["appid"] %>/header.jpg' />
+      <img class="<%= 'done' if game['playtime_forever']/60 < params[:h].to_i %>" onerror='this.style.display="none"' src='http://cdn.akamai.steamstatic.com/steam/apps/<%= game["appid"] %>/header_292x136.jpg' />
     </span>
   <% end %>
 </div>
