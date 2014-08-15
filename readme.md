@@ -14,3 +14,7 @@ Check it out at [steamgrid.herokuapp.com](http://steamgrid.herokuapp.com).
 ### usage
 
 Visit the app, enter your steam ID (steamcommunity.com/id/THIS) and the minimum number of hours you want the highlighted games to show. Easy.
+
+### License
+
+MIT

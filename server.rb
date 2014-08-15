@@ -1,6 +1,9 @@
-# http://steamcommunity.com/id/xanderstrike?xml=1
+# steamgrid
+#   Alex Standke
+#   https://github.com/XanderStrike
+#   MIT License
 #
-# http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=E1FF6953510EF124ADA4C4E68A11BC35&steamid=76561197978745758&format=json
+# Simple app for showing a pretty grid of your steam games.
 
 require 'sinatra'
 require 'nokogiri'
