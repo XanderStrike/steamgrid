@@ -1,6 +1,6 @@
 # steamgrid
 #   Alex Standke
-#   https://github.com/XanderStrike
+#   https://github.com/XanderStrike/steamgrid
 #   MIT License
 #
 # Simple app for showing a pretty grid of your steam games.
