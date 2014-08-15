@@ -1,14 +1,36 @@
 <h1><%= @name %>'s games</h1>
 
-<p><%= @games.count %> games, <%= @games.map {|g| g["playtime_forever"] }.inject(:+) / 60 %> hours played<br>
-<%= "showing games with more than #{ params[:h] } hours of playtime" if params[:h].to_i > 0 %>
+<form action='/grid'>
+  <table style="width:100%">
+    <tr>
+      <td>
+        steam id (steamcommunity.com/id/THIS)<br>
+        <input type="text" name="id" value="<%= params[:id] %>"><br>
+      </td>
+      <td>
+        highlight games with more than this many hours played (0 for all)<br>
+        <input type="text" name="h" value='<%= params[:h] %>'><br>
+      </td>
+    </tr>
+  </table>
+  <input type="submit" value="go">
+</form>
 
 </p>
 
-<div>
-  <% @games.each do |game| %>
-    <span>
-      <img class="<%= 'done' if game['playtime_forever']/60 < params[:h].to_i %>" onerror='this.style.display="none"' src='http://cdn.akamai.steamstatic.com/steam/apps/<%= game["appid"] %>/header_292x136.jpg' />
-    </span>
-  <% end %>
-</div>
+<% if @notfound %>
+  <div>
+    <h1>Sorry, I couldn't find that steamid. Try harder.</h1>
+  </div>
+<% else %>
+  <p><%= @games.count %> games, <%= @games.map {|g| g["playtime_forever"] }.inject(:+) / 60 %> hours played<br>
+  <%= "showing games with more than #{ params[:h] } hours of playtime" if params[:h].to_i > 0 %>
+
+  <div>
+    <% @games.each do |game| %>
+      <span>
+        <img class="<%= 'done' if game['playtime_forever']/60 < params[:h].to_i %>" onerror='this.style.display="none"' src='http://cdn.akamai.steamstatic.com/steam/apps/<%= game["appid"] %>/header_292x136.jpg' />
+      </span>
+    <% end %>
+  </div>
+<% end %>
