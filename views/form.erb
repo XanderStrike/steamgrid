@@ -1,0 +1,16 @@
+<form action="/grid" id="gridForm">
+  <div class="row">
+    <div class="nine columns">
+      <label for="steamID">Steam ID</label>
+      <input class="u-full-width" type="text" placeholder="xanderstrike" id="steamID" name="id" value="<%= params[:id] %>">
+    </div>
+    <div class="three columns">
+      <label for="hours">Highlight Hours</label>
+      <input class="u-full-width" type="number" placeholder="25" id="hours" name="h" value="<%= params[:h] %>">
+    </div>
+  </div>
+  <input class="button-primary" type="submit" value="Go">
+  <% if hideable %>
+    <button class="button" onclick="getElementById('gridForm').innerHTML=''">Hide Form</button>
+  <% end %>
+</form>

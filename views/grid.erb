@@ -1,38 +1,21 @@
-<h1><%= @name %>'s games</h1>
+<h1><%= @name.capitalize %>'s Games</h1>
 
-<form action='/grid'>
-  <table style="width:100%">
-    <tr>
-      <td>
-        steam id (steamcommunity.com/id/THIS)<br>
-        <input type="text" name="id" value="<%= params[:id] %>"><br>
-      </td>
-      <td>
-        highlight games with more than this many hours played (0 for all)<br>
-        <input type="text" name="h" value='<%= params[:h] %>'><br>
-      </td>
-    </tr>
-  </table>
-  <input type="submit" value="go">
-</form>
-
-</p>
+<%= erb :form, locals: { hideable: true } %>
 
 <% if @notfound %>
-  <div>
-    <h1>Sorry, I couldn't find that steamid. Try harder.</h1>
-  </div>
+  <h1>Sorry, I couldn't find that steamid. Try harder.</h1>
 <% else %>
   <p><%= @games.count %> games, <%= @games.map {|g| g["playtime_forever"] }.inject(:+) / 60 %> hours played<br>
-  <%= "showing games with more than #{ params[:h] } hours of playtime" if params[:h].to_i > 0 %>
+  <%= "Showing games with more than #{ params[:h] } hours of playtime." if params[:h].to_i > 0 %></p>
 
-  <div>
-    <% @games.each do |game| %>
-      <span>
-        <img class="<%= 'done' if game['playtime_forever']/60 < params[:h].to_i %>" onerror='this.style.display="none"' src='http://cdn.akamai.steamstatic.com/steam/apps/<%= game["appid"] %>/header_292x136.jpg' />
-      </span>
-    <% end %>
-  </div>
+  <% @games.each_slice(3) do |games| %>
+    <div class="row">
+      <% games.each do |game| %>
+        <div class="four columns">
+          <img class="<%= 'done' if game['playtime_forever']/60 < params[:h].to_i %>" onerror='this.style.display="none"' src='http://cdn.akamai.steamstatic.com/steam/apps/<%= game["appid"] %>/header_292x136.jpg' />
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
 
-<a href="https://github.com/XanderStrike/steamgrid"><img style="width:15%;position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>

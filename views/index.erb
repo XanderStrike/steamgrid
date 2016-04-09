@@ -1,13 +1,5 @@
-<h1>steam grid generator</h1>
+<h1>Steam Grid Generator</h1>
 
-<p>Yeah</p>
+<p>Generates a pretty grid of your game library using the banner images from the Steam store.</p>
 
-<form action='/grid'>
-  steam id (steamcommunity.com/id/THIS)<br>
-  <input type="text" name="id"><br>
-  highlight games with more than this many hours played (0 for all)<br>
-  <input type="text" name="h" value='0'><br>
-  <input type="submit" value="go">
-</form>
-
-<a href="https://github.com/XanderStrike/steamgrid"><img style="width:15%;position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+<%= erb :form %>
