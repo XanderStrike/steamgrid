@@ -1,33 +1,20 @@
 body {
-  background-color: #262627;
-  color: #dddddd;
+  background-color: #222;
+  color: #fff;
+}
+
+input {
+  color: #222;
+}
+
+.button {
+  color: #fff;
 }
 
 img {
-  width:19%;
-}
-
-.container {
-  width:95%;
-  max-width:1000px;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.check
-{
-  text-shadow:
-  -1px -1px 0 #000,
-  1px -1px 0 #000,
-  -1px 1px 0 #000,
-  1px 1px 0 #000; 
-  position:relative;
-  margin-right: -44px;
-  left: -44px;
-  color:#33FF33;
-  font-size:48px;
+  width: 100%;
 }
 
 .done {
-  opacity:0.1;
+  opacity: 0.25;
 }
