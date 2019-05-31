@@ -1,5 +1,7 @@
 FROM ruby
 
+RUN gem install bundler:2.0.1
+
 WORKDIR /app
 ADD Gemfile /app/Gemfile
 ADD Gemfile.lock /app/Gemfile.lock
