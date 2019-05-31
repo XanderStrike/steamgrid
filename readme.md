@@ -6,6 +6,12 @@ Check it out at [steamgrid.herokuapp.com](http://steamgrid.herokuapp.com).
 
 ### installation
 
+Docker:
+
+    docker run -p 4567:4567 xanderstrike/steamgrid
+
+Local:
+
     git clone git@github.com:XanderStrike/steamgrid.git
     cd steamgrid
     bundle install
