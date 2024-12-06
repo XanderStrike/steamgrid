@@ -17,13 +17,11 @@ get '/' do
 end
 
 get '/grid' do
-  begin
-    @name = params[:id]
-    steamid = Nokogiri::HTML(open("http://steamcommunity.com/id/#{ params[:id] }?xml=1")).css("//profile//steamid64").children
-    @games = JSON.parse(open("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=E1FF6953510EF124ADA4C4E68A11BC35&steamid=#{ steamid }&format=json").read)["response"]["games"]
-  rescue
-    @notfound = true
-  end
+  @name = params[:id]
+  steam_profile_url = URI("https://steamcommunity.com/id/#{ params[:id] }?xml=1")
+  steamid = Nokogiri::HTML(URI.open(steam_profile_url)).css("//profile//steamid64").children
+  api_url = URI("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=E1FF6953510EF124ADA4C4E68A11BC35&steamid=#{ steamid }&format=json")
+  @games = JSON.parse(URI.open(api_url).read)["response"]["games"]
 
   erb :grid
 end
