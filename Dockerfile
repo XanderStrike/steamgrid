@@ -1,15 +1,18 @@
-FROM ruby
-
-RUN gem install bundler:2.0.1
+FROM ruby:3.2-slim
 
 WORKDIR /app
-ADD Gemfile /app/Gemfile
-ADD Gemfile.lock /app/Gemfile.lock
-RUN bundle install --system
 
-ADD . /app
-RUN bundle install --system
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY Gemfile* ./
+
+RUN bundle install
+
+COPY . .
 
 EXPOSE 4567
 
-CMD ["ruby", "server.rb"]
+CMD ["ruby", "server.rb", "-o", "0.0.0.0"] 

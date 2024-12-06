@@ -5,6 +5,7 @@ GEM
     logger (1.6.2)
     mustermann (3.0.3)
       ruby2_keywords (~> 0.0.1)
+    nio4r (2.7.4)
     nokogiri (1.16.8-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.16.8-arm-linux)
@@ -17,6 +18,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.8-x86_64-linux)
       racc (~> 1.4)
+    puma (6.5.0)
+      nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.8)
     rack-protection (4.1.1)
@@ -25,6 +28,8 @@ GEM
       rack (>= 3.0.0, < 4)
     rack-session (2.0.0)
       rack (>= 3.0.0)
+    rackup (2.2.1)
+      rack (>= 3)
     ruby2_keywords (0.0.5)
     sinatra (4.1.1)
       logger (>= 1.6.0)
@@ -45,6 +50,8 @@ PLATFORMS
 
 DEPENDENCIES
   nokogiri
+  puma
+  rackup
   sinatra
 
 BUNDLED WITH
