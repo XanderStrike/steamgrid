@@ -10,7 +10,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'json'
 
-set :bind, '0.0.0.0'
+set :environment, :production
 
 get '/' do
   erb :index
